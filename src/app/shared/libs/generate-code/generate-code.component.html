@@ -4,16 +4,16 @@
   </div>
   <div class="flex justify-end p-2 mt-2">
     <app-mp-button [class]="{ 'common-btn secondary-btn font-base font-semibold rounded-[5px] mr-4': true }"
-      (buttonTap)="closeDialog(false)">{{'partner.add.cancel' | translate }}</app-mp-button>
+    (buttonTap)="closeDialog(false)">{{'partner.add.cancel' | translate }}</app-mp-button>
     <app-mp-button [class]="{'common-btn primary-btn font-base font-semibold rounded-[5px] h-[40px] w-[100px]': true}"
       (buttonTap)="tapOkButton()" [isDisabled]="isSubmitted" [spin]="isSubmitted">{{'partner.confirmDialog.deleteButton'
-      | translate}}</app-mp-button>
+    | translate}}</app-mp-button>
   </div>
 
 </div>
 
 <ng-template #requiredError let-control="control">
-  <ng-container *ngIf="control.touched && control.errors?.required">
+  @if (control.touched && control.errors?.required) {
     <p class="error-message">{{ 'validation.fieldRequired' | translate }}</p>
-  </ng-container>
+  }
 </ng-template>

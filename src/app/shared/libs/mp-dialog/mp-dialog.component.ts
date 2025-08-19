@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ComponentRef, DestroyRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-mp-dialog',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ReactiveFormsModule, DynamicDirective, MpButtonComponent],
+  imports: [TranslateModule, ReactiveFormsModule, DynamicDirective, MpButtonComponent],
   templateUrl: './mp-dialog.component.html',
   styleUrls: ['./mp-dialog.component.scss']
 })
