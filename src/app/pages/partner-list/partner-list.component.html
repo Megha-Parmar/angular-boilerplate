@@ -16,9 +16,11 @@
     <div class="p-1.5 sm:p-2 order-2 sm:order-none flex-auto sm:flex-none">
       <ng-select class="w-full font-semibold text-secondary custom-select rounded" [formControl]="sortValue"
         [clearable]="false" [searchable]="false" (change)="getPartnerList()">
-        <ng-option *ngFor="let sort of sortOptions" [value]="sort.value">
+        @for (sort of sortOptions; track sort.value) {
+        <ng-option [value]="sort.value">
           {{ 'common.' + sort.label | translate }}
         </ng-option>
+        }
       </ng-select>
     </div>
   </div>
@@ -96,16 +98,20 @@
         </tr>
 
       </table>
-      <ng-container *ngIf="!isLoading && !partnerList.data.length">
-        <div class="flex items-center font-medium justify-center h-[80px]">
-          {{ 'common.noDataFound' | translate }}
-        </div>
-      </ng-container>
-      <ng-container *ngIf="isLoading">
-        <div class="flex items-center justify-center h-[80px]">
-          <app-mp-loader [class]="{ 'w-8 h-8 border-x-primary border-y-transparent': true }"></app-mp-loader>
-        </div>
-      </ng-container>
+
+      @if (!isLoading && !partnerList.data.length) {
+      <div class="flex items-center font-medium justify-center h-[80px]">
+        {{ 'common.noDataFound' | translate }}
+      </div>
+      }
+      <!-- <ng-container *ngIf="isLoading"> -->
+
+      @if (isLoading) {
+      <div class="flex items-center justify-center h-[80px]">
+        <app-mp-loader [class]="{ 'w-8 h-8 border-x-primary border-y-transparent': true }"></app-mp-loader>
+      </div>
+      }
+      <!-- </ng-container> -->
     </div>
     <mat-paginator class="custom-paginator" (page)="getPartnerList()" [pageSizeOptions]="pageSizeOptions"
       showFirstLastButtons></mat-paginator>
