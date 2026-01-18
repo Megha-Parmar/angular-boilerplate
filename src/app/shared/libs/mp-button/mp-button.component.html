@@ -1,9 +1,8 @@
 <button [type]="type" [disabled]="isDisabled" [ngClass]="class" (click)="click()">
-  <ng-container *ngIf="!spin; else spinner;">
+  @if (!spin) {
     <ng-content></ng-content>
-  </ng-container>
+  } @else {
+    <app-mp-loader [class]="{ 'w-6 h-6 border-x-secondary border-y-transparent': true }"></app-mp-loader>
+  }
 </button>
 
-<ng-template #spinner>
-  <app-mp-loader [class]="{ 'w-6 h-6 border-x-secondary border-y-transparent': true }"></app-mp-loader>
-</ng-template>

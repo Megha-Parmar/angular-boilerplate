@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
@@ -11,7 +11,7 @@ import { BreadCrumb, BreadcrumbEventModel } from '@models/breadcrumb.model';
 @Component({
   selector: 'app-pages',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent, BreadcrumbComponent, HeaderComponent],
+  imports: [RouterOutlet, SidebarComponent, BreadcrumbComponent, HeaderComponent],
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss']
 })

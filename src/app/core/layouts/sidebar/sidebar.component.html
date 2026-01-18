@@ -26,14 +26,16 @@
   <div class="mt-5">
     <ng-select class="w-full font-semibold text-secondary custom-select rounded" [searchable]="false"
       [clearable]="false" [(ngModel)]="currentLanguage" (change)="changeLanguage()">
-      <div *ngFor="let language of languageList">
-        <ng-option [value]="language.value">
-          <span class="flex">
-            <img [src]="language.src" height="25" width="30" [alt]="language.alt" />
-            <span class="ml-2">{{language.viewValue}}</span>
-          </span>
-        </ng-option>
-      </div>
+      @for (language of languageList; track language) {
+        <div>
+          <ng-option [value]="language.value">
+            <span class="flex">
+              <img [src]="language.src" height="25" width="30" [alt]="language.alt" />
+              <span class="ml-2">{{language.viewValue}}</span>
+            </span>
+          </ng-option>
+        </div>
+      }
     </ng-select>
     <p class="text-base xl:text-lg text-secondary font-semibold mt-4">{{ userData?.name }}</p>
     <div class="mt-6">

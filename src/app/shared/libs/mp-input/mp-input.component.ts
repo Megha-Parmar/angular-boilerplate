@@ -1,5 +1,8 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, ContentChild, Input, Renderer2, ViewChild, ViewContainerRef, forwardRef } from '@angular/core';
+import {
+  Component, ContentChild, Input,
+  Renderer2, ViewChild, ViewContainerRef, forwardRef, AfterViewInit
+} from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Params } from '@angular/router';
 import { PositionEnum, RegexType } from '@constants/app.constants';
@@ -17,7 +20,7 @@ import { AllowNumberOnlyDirective } from '@directives/allow-number-only.directiv
   standalone: true,
   imports: [NgClass, FormsModule, NgIf, AllowNumberOnlyDirective]
 })
-export class MpInputComponent implements ControlValueAccessor {
+export class MpInputComponent implements ControlValueAccessor, AfterViewInit {
 
   @Input() customClass: Params;
   @Input() label: string;
